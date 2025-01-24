@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #game-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(6, 55px);
+            grid-template-rows: repeat(5, 55px);
+            gap: 40px;
+            background-color: #2b2b2b;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .gem {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightgray;
+            border-radius: 50%;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .empty {
+            background-color: transparent;
+        }
+
+        .gem img {
+            width: 40px;
+            height: 40px;
+        }
+
+        #penjudi, #bandar {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #penjudi div, #bandar div {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        #penjudi {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #bandar {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        #bandar label, #bandar input, #bandar button {
+            margin-bottom: 10px;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #bandar button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        #bandar input[type="range"] {
+            width: 100%;
+        }
+
+        .column-label {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+    
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 10px white, 0 0 20px white;
+            }
+            50% {
+                box-shadow: 0 0 20px yellow, 0 0 30px yellow;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div>
+            <div class="column-label">Gem Board</div>
+            <div id="board"></div>
+        </div>
+        <div>
+            <div class="column-label">Penjudi</div>
+            <div id="penjudi">
+                <div id="score">Score: $0</div>
+                <div id="money">Money: $50</div>
+                <div id="bet">Bet: $5</div>
+                <button id="spinButton">Spin</button>
+                <input type="number" id="depositAmount" placeholder="Deposit Amount">
+                <button id="depositButton">Deposit</button>
+                <div class="bet-controls">
+                    <button id="decreaseBetButton">Decrease Bet</button>
+                    <button id="increaseBetButton">Increase Bet</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="column-label">Bandar</div>
+            <div id="bandar">
+                <label for="winRateSlider">Win Rate:</label>
+                <input type="range" id="winRateSlider" min="0" max="100" value="0" step="1">
+                <div id="winRateValue">0%</div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
